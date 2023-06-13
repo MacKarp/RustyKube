@@ -20,7 +20,7 @@ on:
           run:  cargo build --verbose
         - name: Test
           run:  cargo test --verbose
-        -name: Clippy
+        - name: Clippy
           run: cargo clippy --verbose -- -D warnings
         - name: Audit
           run:  cargo audit
