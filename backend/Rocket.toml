@@ -2,4 +2,4 @@
 port = 9999
 
 [release]
-port = 9999
+port = 80
