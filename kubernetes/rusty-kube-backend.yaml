@@ -1,75 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    deployment.kubernetes.io/revision: "3"
-  creationTimestamp: "2023-06-13T11:12:18Z"
-  labels:
-    app: rusty-kube-backend
+  name: rusty-kube-backend
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: rusty-kube-backend
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
   template:
     metadata:
       labels:
         app: rusty-kube-backend
     spec:
       containers:
-      - env:
-        - name: MONGO_USER_NAME
-          valueFrom:
-            configMapKeyRef:
-              key: MONGO_USER_NAME
-              name: rusty-kube-backend-config-vv5i
-        - name: MONGO_USER_PASSWORD
-          valueFrom:
-            configMapKeyRef:
-              key: MONGO_USER_PASSWORD
-              name: rusty-kube-backend-config-vv5i
-        - name: MONGO_URI
-          valueFrom:
-            configMapKeyRef:
-              key: MONGO_URI
-              name: rusty-kube-backend-config-vv5i
-        - name: DATABASE_NAME
-          valueFrom:
-            configMapKeyRef:
-              key: DATABASE_NAME
-              name: rusty-kube-backend-config-vv5i
-        - name: MONGO_APP_NAME
-          valueFrom:
-            configMapKeyRef:
-              key: MONGO_APP_NAME
-              name: rusty-kube-backend-config-vv5i
-        image: gcr.io/rustykube/github.com/mackarp/rustykube:79d2756
-        imagePullPolicy: IfNotPresent
-        name: rustykube-1
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 30
-status:
-  availableReplicas: 3
-  conditions:
-  - lastTransitionTime: "2023-06-13T11:35:19Z"
-    lastUpdateTime: "2023-06-13T11:38:58Z"
-    message: ReplicaSet "rusty-kube-backend-6d7fcc6485" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  - lastTransitionTime: "2023-06-13T11:41:01Z"
-    lastUpdateTime: "2023-06-13T11:41:01Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  observedGeneration: 3
-  readyReplicas: 3
-  replicas: 3
-  updatedReplicas: 3
+        - name: rustykube-1
+          image: gcr.io/rustykube/github.com/mackarp/rustykube:latest
