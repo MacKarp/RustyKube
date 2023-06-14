@@ -4,15 +4,15 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "3"
   labels:
-    app: rusty-kube-backend
-  name: rusty-kube-backend
+    app: backend
+  name: backend
   namespace: default
 spec:
   progressDeadlineSeconds: 600
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: rusty-kube-backend
+      app: backend
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -22,7 +22,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: rusty-kube-backend
+        app: backend
     spec:
       containers:
       - env:
@@ -30,27 +30,27 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: MONGO_USER_NAME
-              name: rusty-kube-backend-config-vv5i
+              name: backend-config-1d8f
         - name: MONGO_USER_PASSWORD
           valueFrom:
             configMapKeyRef:
               key: MONGO_USER_PASSWORD
-              name: rusty-kube-backend-config-vv5i
+              name: backend-config-1d8f
         - name: MONGO_URI
           valueFrom:
             configMapKeyRef:
               key: MONGO_URI
-              name: rusty-kube-backend-config-vv5i
+              name: backend-config-1d8f
         - name: DATABASE_NAME
           valueFrom:
             configMapKeyRef:
               key: DATABASE_NAME
-              name: rusty-kube-backend-config-vv5i
+              name: backend-config-1d8f
         - name: MONGO_APP_NAME
           valueFrom:
             configMapKeyRef:
               key: MONGO_APP_NAME
-              name: rusty-kube-backend-config-vv5i
+              name: backend-config-1d8f
         image: gcr.io/rustykube/github.com/mackarp/rustykube:latest
         imagePullPolicy: IfNotPresent
         name: rustykube-1
