@@ -51,7 +51,7 @@ spec:
             configMapKeyRef:
               key: MONGO_APP_NAME
               name: backend-config-wrnm
-        image: eu.gcr.io/rustykube/github.com/mackarp/rustykube:latest
+        image: gcr.io/rustykube/github.com/mackarp/rustykube:latest
         imagePullPolicy: IfNotPresent
         name: rustykube-1
         terminationMessagePath: /dev/termination-log
