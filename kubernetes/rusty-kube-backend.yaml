@@ -9,7 +9,7 @@ metadata:
   namespace: default
 spec:
   progressDeadlineSeconds: 600
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: backend
@@ -30,28 +30,28 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: MONGO_USER_NAME
-              name: backend-config-1d8f
+              name: backend-config-wrnm
         - name: MONGO_USER_PASSWORD
           valueFrom:
             configMapKeyRef:
               key: MONGO_USER_PASSWORD
-              name: backend-config-1d8f
+              name: backend-config-wrnm
         - name: MONGO_URI
           valueFrom:
             configMapKeyRef:
               key: MONGO_URI
-              name: backend-config-1d8f
+              name: backend-config-wrnm
         - name: DATABASE_NAME
           valueFrom:
             configMapKeyRef:
               key: DATABASE_NAME
-              name: backend-config-1d8f
+              name: backend-config-wrnm
         - name: MONGO_APP_NAME
           valueFrom:
             configMapKeyRef:
               key: MONGO_APP_NAME
-              name: backend-config-1d8f
-        image: gcr.io/rustykube/github.com/mackarp/rustykube:latest
+              name: backend-config-wrnm
+        image: eu.gcr.io/rustykube/github.com/mackarp/rustykube:latest
         imagePullPolicy: IfNotPresent
         name: rustykube-1
         terminationMessagePath: /dev/termination-log
