@@ -4,7 +4,7 @@ COPY . .
 RUN cargo install --path .
 FROM debian:buster-slim
 RUN groupadd -r user && useradd -r -g user user -d /home/user
-RUN apt-get update && apt-get install --no-install-recommends -y extra-runtime-dependencies && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get upgrade && rm -rf /var/lib/apt/lists/*
 USER user
 COPY --from=builder /usr/local/cargo/bin/backend /usr/local/bin/backend
 ENV ROCKET_ADDRESS=0.0.0.0
