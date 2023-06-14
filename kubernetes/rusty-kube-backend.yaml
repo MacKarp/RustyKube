@@ -24,6 +24,8 @@ spec:
       labels:
         app: backend
     spec:
+      securityContext:
+        runAsNonRoot: true
       containers:
       - env:
         - name: MONGO_USER_NAME
@@ -56,6 +58,9 @@ spec:
         name: rustykube-1
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+        securityContext:
+          runAsNonRoot: true 
+          allowPrivilegeEscalation: false 
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
